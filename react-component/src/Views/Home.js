@@ -38,6 +38,10 @@ function Home() {
             </Button>
              </Modal.Footer>
             </Modal>
+
+
+            <Button variant="primary" href="/results">Results</Button>{' '}
+
         </Container>
     )
 }

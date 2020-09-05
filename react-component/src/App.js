@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './Views/Home'
 import LogIn from './Views/LogIn'
 import SignUp from './Views/SignUp'
+import Results from './Views/Results'
 
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
 
         <Route exact path="/signup">
           <SignUp/>
+        </Route>
+
+        <Route exact path="/results">
+          <Results/>
         </Route>
 
       </Switch>
