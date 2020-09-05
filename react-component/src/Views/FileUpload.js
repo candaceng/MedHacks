@@ -2,13 +2,10 @@ import axios from 'axios';
   
 import React,{Component} from 'react'; 
 import { Link, Switch, Redirect, Route } from 'react-router-dom'
-import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal'
-import Results from '../Views/Results'
-import { PopoverContent } from 'react-bootstrap';
+import Results from './Results'
   
 class FileUpload extends Component { 
    
@@ -18,15 +15,13 @@ class FileUpload extends Component {
      
     // On file select (from the pop up) 
     onFileChange = event => { 
-     
-      // Update the state 
-      this.setState({ selectedFile: event.target.files[0] }); 
+          this.setState({ selectedFile: event.target.files[0] }); 
      
     }; 
-     
-    // On file upload (click the upload button) 
+    
+    // backend api stuff ???????????
     onFileUpload = () => { 
-     
+
       // Create an object of formData 
       const formData = new FormData(); 
      
@@ -46,19 +41,19 @@ class FileUpload extends Component {
     }; 
      
     content = () => {
-        if (this.state.selectedFile) { 
+        if (this.state.selectedFile) {  // if file is uploaded, redirect to results page
             return(
                 <div> 
                 <Switch>
                 <Redirect from='/' to='/results' />
                 <Route path='/results'>
-                  <Results />
+                  <Results image={this.state.selectedFile}/>
                 </Route>
                 </Switch>
                 </div>  
             )
 
-        }else {
+        }else { // else display upload page
 
             return (
             <Container className="m-5">
@@ -67,13 +62,11 @@ class FileUpload extends Component {
             <h1 style={{textAlign: "center", paddingTop: "20%"}}>AppName</h1>
             <Form>
                 <Form.File
-                type="file"
-                label="Upload your skin lesion!"
-                custom
-                onChange={this.onFileChange}/>
-            <Button onClick={this.onFileUpload} to="results" > 
-                Upload!
-            </Button> 
+                  id="example"
+                  type="file"
+                  label="Upload your skin lesion!"
+                  custom
+                  onChange={this.onFileChange && this.onFileUpload}/>
             </Form>
                 
             <Button variant="primary" href="/results">Results</Button>{' '}
@@ -94,13 +87,3 @@ class FileUpload extends Component {
   } 
   
   export default FileUpload; 
-
-  {/* <Form>
-            <Form.File 
-                id="skin-img"
-                label="Upload your skin lesion"
-                onChange={() => onFileChange}
-                custom
-            />
-            <Button onClick={() => onFileUpload}>Upload</Button>
-            </Form> */}
