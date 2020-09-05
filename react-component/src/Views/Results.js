@@ -6,9 +6,9 @@ import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'react-router-dom';
 
 
-function Results() {
+function Results(props) {
     // const handlePageChange(){
-    //     window.location.href="https://stackoverflow.com/questions/52038274/react-router-redirect-to-homepage"
+    //     window.location.href="https://stackoverflow.conm/questions/52038274/react-router-redirect-to-homepage"
     // }
     return(
         <div>
@@ -23,8 +23,9 @@ function Results() {
             <Alert variant='success'>Image was sucessfully uploaded!</Alert>
             
             <div className= "title"> Your Results: </div>
+            
 
-            <img className = "img" alt="monster" src={'https://d9qc22597pyja.cloudfront.net/Pictures/2000x2000fit/7/4/1/5741_dermfib3_458338.jpg'}/>
+            <img className = "img" alt="monster" src={props.image}/>
             <br/>
            <button className="btn btn-success">
                 Take another image    

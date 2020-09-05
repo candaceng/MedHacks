@@ -10,7 +10,8 @@ import Results from './Results'
 class FileUpload extends Component { 
    
     state = { 
-        selectedFile: null
+        selectedFile: null,
+        status: false
     }; 
      
     // On file select (from the pop up) 
@@ -27,13 +28,14 @@ class FileUpload extends Component {
      
       // Update the formData object 
       formData.append( 
-        "myFile", 
-        this.state.selectedFile, 
-        this.state.selectedFile.name 
-      ); 
+          "myFile", 
+          this.state.selectedFile, 
+          this.state.selectedFile.name
+        ); 
      
       // Details of the uploaded file 
       console.log(this.state.selectedFile); 
+      this.setState({status: true})
      
       // Request made to the backend api 
       // Send formData object 
@@ -41,11 +43,11 @@ class FileUpload extends Component {
     }; 
      
     content = () => {
-        if (this.state.selectedFile) {  // if file is uploaded, redirect to results page
+        if (this.state.selectedFile && this.state.status) {  // if file is uploaded, redirect to results page
             return(
                 <div> 
                 <Switch>
-                <Redirect from='/' to='/results' />
+                <Redirect from='/' to='/results'/>
                 <Route path='/results'>
                   <Results image={this.state.selectedFile}/>
                 </Route>
@@ -53,21 +55,23 @@ class FileUpload extends Component {
                 </div>  
             )
 
-        }else { // else display upload page
-
+        } else { // else display upload page
             return (
             <Container className="m-5">
             <Button variant="primary" href="/login">Log In</Button>{' '}
             <Button variant="primary" href="/signup">SignUp</Button>{' '}
             <h1 style={{textAlign: "center", paddingTop: "20%"}}>AppName</h1>
-            <Form>
-                <Form.File
+            <div>
+                <input
                   id="example"
                   type="file"
                   label="Upload your skin lesion!"
                   custom
-                  onChange={this.onFileChange && this.onFileUpload}/>
-            </Form>
+                  onChange={this.onFileChange}/>
+                  <Button onClick={this.onFileUpload}> 
+                  Upload! 
+                </Button> 
+            </div>
                 
             <Button variant="primary" href="/results">Results</Button>{' '}
 
@@ -77,7 +81,6 @@ class FileUpload extends Component {
     }
      
     render() { 
-     
       return ( 
         <div> 
             {this.content()}
