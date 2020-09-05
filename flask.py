@@ -1,17 +1,38 @@
+import base64
+import json
+from io import BytesIO
+import numpy as np
+import requests
+from flask import Flask, request, jsonify, render_template
 import tensorflow as tf
 tf.enable_eager_execution()
 from tensorflow import keras
-from keras.models import load_model
 import functools
-import json
+from scipy import ndimage, misc
+from PIL import Image
 
+app = Flask(__name__)
 model = keras.models.load_model('model.h5')
+categories = ['Actinic Keratoses',
+             'Basal Cell Carcinoma',
+             'Benign Keratosis',
+             'Dermatofibroma',
+             'Melanoma',
+             'Melanocytic Nevi',
+             'Vascular skin lesion']
+dict = {}
 
-# gets the uploaded image, formats it, then passes it into the model to make a prediction
-# returns a json of prediction results
-def predict(model, image):
-    # clean_image = ... standardize the image
-    model.predict(clean_image)
-    # dict = ... model predictions
-    result = json.dumps(dict)
-    return result
+@app.route('/predict/', methods=['POST'])
+def predict(model, x):
+    im = np.asarray(Image.open(x).resize((100,75))
+
+    # returns a list of 7 numbers
+    predictions = model.predict(im)[0]
+
+    # match numbers to categories
+    dictionary = dict(zip(categories, predictions))
+
+    return flask.jsonify(dictionary)
+
+
+
