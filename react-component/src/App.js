@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Home from './Views/Home'
 import LogIn from './Views/LogIn'
 import SignUp from './Views/SignUp'
