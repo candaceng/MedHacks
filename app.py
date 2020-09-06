@@ -49,13 +49,13 @@ def results():
     # match result numbers to category names
     zipped = zip(categories, preds)
     # rank results by highest probability
-    sorted_zip = sorted(zipped, reverse = True)
-    # turn ranks into a multi-line string
-    pred_percent = ''
-    for pair in sorted_zip:
-        pred_percent += pair[0] + ': ' + str(pair[1]) + '\n'
-    print(pred_percent)
-    return render_template('results.html', pred_percent = pred_percent)
+    sorted = sorted(zipped, reverse = True)
+    # # turn ranks into a multi-line string
+    # pred_percent = ''
+    # for pair in sorted_zip:
+    #     pred_percent += pair[0] + ': ' + str(pair[1]) + '\n'
+    # print(pred_percent)
+    return render_template('results.html', pred = sorted)
 
 if __name__ == '__main__':
     app.run(debug=True)
