@@ -3,9 +3,8 @@ import json
 from io import BytesIO
 import numpy as np
 import requests
-from flask import request, jsonify, render_template, redirect
+from flask import Flask, request, jsonify, render_template, redirect
 import tensorflow as tf
-tf.enable_eager_execution()
 from tensorflow import keras
 import functools
 from scipy import ndimage, misc
