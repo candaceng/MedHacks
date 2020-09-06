@@ -46,10 +46,9 @@ def fileupload():
 
 @app.route("/results", methods=['GET'])
 def results():
-    # zipped = zip(categories, preds)
-    # sorted_pred = sorted(zipped, reverse = True)
-    # return render_template('results.html', pred = sorted_pred)
-    return render_template('results.html', pred=preds)
+    zipped = zip(categories, preds)
+    sorted_pred = sorted(zipped, reverse = True)
+    return render_template('results.html', pred = sorted_pred)
 
 if __name__ == '__main__':
     app.run(debug=True)
