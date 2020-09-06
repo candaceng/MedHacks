@@ -44,5 +44,15 @@
 }
 
 .container{
-    text-align: center
+    text-align: center}
+   
+    
+    .inner{
+        padding: 50px,
+    /* >>>>>>> 47886385abec3b48203fc7387599af93ae2b8a9b */
+    }
+
+
+.inner{
+    padding: 50px,
 }
