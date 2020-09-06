@@ -51,7 +51,7 @@
         <div className= "title"style="margin-left:30px"> <h3>Your Results:</h3> </div>     
         <div style="margin-left:30px">
             {%for p in pred%} 
-                <h3>{%print(p[0] + ": " + p[1])%}</h3>
+                <h3>{%print(str(p[0]) + ": " + str(p[1]))%}</h3>
             {%endfor%} 
         </div>       
 
