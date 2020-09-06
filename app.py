@@ -3,7 +3,7 @@ import json
 from io import BytesIO
 import numpy as np
 import requests
-from flask import Flask, request, jsonify, render_template, redirect
+from flask import Flask, request, jsonify, render_template, redirect, flash, url_for
 import tensorflow as tf
 from tensorflow import keras
 import functools
@@ -41,8 +41,6 @@ def fileupload():
             print("IMAGE RECEIVED")
             print(preds)
             return redirect(url_for('results'))
-
-
     return render_template("fileupload.html")
 
 @app.route("/results", methods=['GET'])
