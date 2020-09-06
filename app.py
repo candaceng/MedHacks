@@ -54,7 +54,7 @@ def results():
     # pred_percent = ''
     # for pair in sorted_zip:
     #     pred_percent += pair[0] + ': ' + str(pair[1]) + '\n'
-    # print(pred_percent)
+    print(sorted_pred)
     return render_template('results.html', pred = sorted_pred)
 
 if __name__ == '__main__':
