@@ -27,7 +27,7 @@ pred = np.zeros(7)
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('fileupload2.html')
 
 @app.route("/doctor", methods=['GET', 'POST'])
 def doctor():
@@ -51,7 +51,7 @@ def fileupload():
 
 @app.route("/results", methods=['GET'])
 def results():
-    return render_template('results.html', pred)
+    return render_template('results.html', pred = pred)
 
 if __name__ == '__main__':
     app.run(debug=True)
