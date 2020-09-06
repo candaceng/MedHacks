@@ -33,12 +33,13 @@ def doctor():
 
 @app.route("/fileupload", methods=['GET', 'POST'])
 def fileupload():
-    if request.method == "POST":
+    if request.method == "POST":    # if upload is successful I guess?
         if request.files:
             image = np.asarray(Image.open(request.files["image"]).stream.resize((100,75)))
             image.shape = (1,) + image.shape
             preds = model.predict(image)[0]
-
+            print("IMAGE RECEIVED")
+            print(preds)
             return redirect(request.url)
 
 
@@ -49,7 +50,6 @@ def results():
     zipped = zip(categories, preds)
     sorted_pred = sorted(zipped, reverse = True)
     pred_str = [(str(p[0]) + ': ' + str(p[1])) for p in sorted_pred]
-    print(pred_str)
     return render_template('results.html', pred = pred_str)
 
 if __name__ == '__main__':
