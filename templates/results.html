@@ -45,11 +45,15 @@
                 <i id="home-screen" class="material-icons" style="font-size:35px;" >home</i>
             </a>
         </div>
-        <h1>{{pred_percent}}</h1>
         <div class="alert alert-success" role="alert">
             Image was successfully uploaded!
         </div>
-        <div className= "title"style="margin-left:30px"> <h3>Your Results:</h3> </div>            
+        <div className= "title"style="margin-left:30px"> <h3>Your Results:</h3> </div>     
+        <div style="margin-left:30px">
+            {%for p in pred%} 
+                <h3>{{p}}</h3>
+            {%endfor%} 
+        </div>       
 
         <img className = "img" alt="image-upload" style="margin-left:30px; width:30%; height:auto; margin-bottom: 30px " src="https://d9qc22597pyja.cloudfront.net/Pictures/2000x2000fit/7/4/1/5741_dermfib3_458338.jpg"/>
         <br/>
@@ -57,8 +61,6 @@
         <a class="btn btn-success" href="doctor.html" role="button"style="margin-left:10px">Email doctor</a>
         <a class="btn btn-success" href="info.html" role="button"style="margin-left:10px">Learn more</a>
         
-        <!-- <Button variant="success" href='/' style={{marginLeft:'30px'}}>Take another image</Button>
-            <Button variant="success" href='/doctor' style={{marginLeft:'10px'}}>Email Doctor</Button> -->
 
     </body>
 
