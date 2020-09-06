@@ -3,7 +3,7 @@ import json
 from io import BytesIO
 import numpy as np
 import requests
-from flask import request, jsonify, render_template, redirect
+from flask import Flask, request, jsonify, render_template, redirect
 import tensorflow as tf
 from tensorflow import keras
 import functools
