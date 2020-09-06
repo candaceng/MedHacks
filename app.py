@@ -21,8 +21,6 @@ categories = ['Actinic Keratoses',
              'Melanoma',
              'Melanocytic Nevi',
              'Vascular skin lesion']
-dict = {}
-
 preds = np.zeros(7)
 
 @app.route("/")
@@ -49,12 +47,12 @@ def fileupload():
 @app.route("/results", methods=['GET'])
 def results():
     # match result numbers to category names
-    dict = dict(zip(categories, preds))
+    zipped = zip(categories, preds)
     # rank results by highest probability
-    sorted_dict = sorted(dict.items(), key=lambda item: item[1], reverse = True)
+    sorted_zip = sorted(zipped, reverse = True)
     # turn ranks into a multi-line string
     pred_percent = ""
-    for pair in sorted_dict:
+    for pair in sorted_zip:
         pred_percent += ": ".join(pair) + '\n'
     return render_template('results.html', pred_percent = pred_percent)
 
