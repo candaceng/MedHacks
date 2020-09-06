@@ -15,7 +15,6 @@ from keras.models import load_model
 model = load_model('model.h5')
 
 app = Flask(__name__)
-model = keras.models.load_model('model.h5')
 # categories = ['Actinic Keratoses',
 #              'Basal Cell Carcinoma',
 #              'Benign Keratosis',
@@ -39,18 +38,19 @@ def predict(model, x):
     return predictions
 
 @app.route("/")
+def index():
+    return render_template('index.html')
 
 @app.route("/doctor", methods=['GET', 'POST'])
-def home():
+def doctor():
     return render_template('doctor.html')
 
-
 @app.route("/fileupload", methods=['GET', 'POST'])
-def about():
-    return render_template('fileupload.html')
+def fileupload():
+    return render_template("fileupload.html")
 
 @app.route("/results", methods=['GET'])
-def about():
+def results():
     return render_template('results.html')
 
 
