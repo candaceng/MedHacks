@@ -24,19 +24,6 @@ app = Flask(__name__)
 #              'Vascular skin lesion']
 # dict = {}
 
-@app.route('/predict/', methods=['POST'])
-def predict(model, x):
-    im = np.asarray(Image.open(x).resize((100,75))
-
-    # returns a list of 7 numbers
-    predictions = model.predict(im)[0]
-
-    # match numbers to categories
-    # dictionary = dict(zip(categories, predictions))
-    # return flask.jsonify(dictionary)
-
-    return predictions
-
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -47,6 +34,19 @@ def doctor():
 
 @app.route("/fileupload", methods=['GET', 'POST'])
 def fileupload():
+    if request.method == "POST":
+        if request.files:
+            image = np.asarray(Image.open(request.files["image"]).stream.resize((100,75))))
+            image.shape = (1,) + image.shape
+            pred = model.predict(image)[0]
+            # match numbers to categories
+            # dictionary = dict(zip(categories, predictions))
+            # return flask.jsonify(dictionary)
+
+
+            return redirect(request.url)
+
+
     return render_template("fileupload.html")
 
 @app.route("/results", methods=['GET'])
