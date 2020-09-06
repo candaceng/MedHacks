@@ -3,7 +3,7 @@ import json
 from io import BytesIO
 import numpy as np
 import requests
-from flask import Flask, request, jsonify, render_template, redirect
+from flask import Flask, request, jsonify, render_template, redirect, flash, url_for
 import tensorflow as tf
 from tensorflow import keras
 import functools
@@ -14,6 +14,7 @@ from keras.models import load_model
 model = load_model('model.h5')
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = 'medhacks/img'
 categories = ['Actinic Keratoses',
              'Basal Cell Carcinoma',
              'Benign Keratosis',
@@ -34,14 +35,20 @@ def doctor():
 @app.route("/fileupload", methods=['GET', 'POST'])
 def fileupload():
     if request.method == "POST":
-        if request.files:
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file:
             image = np.asarray(Image.open(request.files["image"]).stream.resize((100,75)))
             image.shape = (1,) + image.shape
             preds = model.predict(image)[0]
-
-            return redirect(request.url)
-
-
+            print("DEBUG: IMAGE RECEIVED")
+            print(preds)
+            return redirect(url_for('results'))
     return render_template("fileupload.html")
 
 @app.route("/results", methods=['GET'])
@@ -49,7 +56,6 @@ def results():
     zipped = zip(categories, preds)
     sorted_pred = sorted(zipped, reverse = True)
     pred_str = [(str(p[0]) + ': ' + str(p[1])) for p in sorted_pred]
-    print(pred_str)
     return render_template('results.html', pred = pred_str)
 
 if __name__ == '__main__':
