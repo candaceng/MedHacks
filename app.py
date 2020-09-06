@@ -3,7 +3,7 @@ import json
 from io import BytesIO
 import numpy as np
 import requests
-from flask import Flask, request, jsonify, render_template
+from flask import request, jsonify, render_template, redirect
 import tensorflow as tf
 tf.enable_eager_execution()
 from tensorflow import keras
@@ -36,13 +36,12 @@ def doctor():
 def fileupload():
     if request.method == "POST":
         if request.files:
-            image = np.asarray(Image.open(request.files["image"]).stream.resize((100,75))))
+            image = np.asarray(Image.open(request.files["image"]).stream.resize((100,75)))
             image.shape = (1,) + image.shape
             pred = model.predict(image)[0]
             # match numbers to categories
             # dictionary = dict(zip(categories, predictions))
             # return flask.jsonify(dictionary)
-
 
             return redirect(request.url)
 
