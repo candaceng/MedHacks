@@ -16,30 +16,34 @@ class FileUpload extends Component {
      
     // On file select (from the pop up) 
     onFileChange = event => { 
-          this.setState({ selectedFile: event.target.files[0] }); 
-     
+          this.setState({ 
+            selectedFile: URL.createObjectURL(event.target.files[0])
+          }); 
     }; 
     
     // backend api stuff ???????????
     onFileUpload = () => { 
 
       // Create an object of formData 
-      const formData = new FormData(); 
+      // const formData = new FormData(); 
      
-      // Update the formData object 
-      formData.append( 
-          "myFile", 
-          this.state.selectedFile, 
-          this.state.selectedFile.name
-        ); 
+      // // Update the formData object 
+      // formData.append( 
+      //     "myFile", 
+      //     this.state.selectedFile, 
+      //     this.state.selectedFile.name
+      //   ); 
      
       // Details of the uploaded file 
+      var file = document.getElementById('fileItem').files[0];
+
       console.log(this.state.selectedFile); 
+      console.log(file);
       this.setState({status: true})
      
       // Request made to the backend api 
       // Send formData object 
-      axios.post("api/uploadfile", formData); 
+      // axios.post("api/uploadfile", formData); 
     }; 
      
     content = () => {
@@ -63,7 +67,7 @@ class FileUpload extends Component {
             <h1 style={{textAlign: "center", paddingTop: "20%"}}>AppName</h1>
             <div>
                 <input
-                  id="example"
+                  id="fileItem"
                   type="file"
                   label="Upload your skin lesion!"
                   custom
