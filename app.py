@@ -48,7 +48,7 @@ def fileupload():
 def results():
     zipped = zip(categories, preds)
     sorted_pred = sorted(zipped, reverse = True)
-    pred_str = [": ".join(str(p[0]), str(p[1])) for p in sorted_pred]
+    pred_str = [": ".join(p) for p in sorted_pred]
     return render_template('results.html', pred = pred_str)
 
 if __name__ == '__main__':
