@@ -1,3 +1,5 @@
+# Skin Lesion Classifier - MedHacks 2020
+
 ## Inspiration 
 Due to the current global pandemic, it may be difficult and risky to go to the hospital to receive check ups and a lot of family doctor appointments are done virtually over call. Most skin lesions need to be monitored over time to properly identify which type it is and how to go about treatment. With our application, we’d like to bring a simple diagnosis at the cost of just a single click. This way, the user can have a general idea of what the condition could be and stay educated and informed.
 
