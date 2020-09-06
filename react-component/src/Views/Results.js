@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './results.css';
 import {Alert} from 'react-bootstrap';
+import './results.css';
 import HomeIcon from '@material-ui/icons/Home';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button'
 
 
 function Results(props) {
@@ -27,10 +28,9 @@ function Results(props) {
 
             <img className = "img" alt="monster" src={props.image}/>
             <br/>
-           <button className="btn btn-success">
-                Take another image    
-            </button>
-            <button className="btn btn-success"> Email Doctor </button>
+            <Button variant="success" href='/' style={{marginLeft:'30px'}}>Take another image</Button>
+            <Button variant="success" href='/doctor' style={{marginLeft:'10px'}}>Email Doctor</Button>
+        
         </div>
     )
 }

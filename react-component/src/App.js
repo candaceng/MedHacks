@@ -8,6 +8,7 @@ import LogIn from './Views/LogIn'
 import SignUp from './Views/SignUp'
 import Results from './Views/Results'
 import FileUpload from './Views/FileUpload'
+import ContactDoctor from './Views/Doctor'
 
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
 
         <Route exact path="/results">
           <Results/>
+        </Route>
+
+        <Route exact path="/doctor">
+          <ContactDoctor/>
         </Route>
 
       </Switch>
