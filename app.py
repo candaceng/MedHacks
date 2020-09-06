@@ -24,6 +24,8 @@ app = Flask(__name__)
 #              'Vascular skin lesion']
 # dict = {}
 
+pred = np.zeros(7)
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -50,9 +52,7 @@ def fileupload():
 
 @app.route("/results", methods=['GET'])
 def results():
-    return render_template('results.html')
-
-
+    return render_template('results.html', pred)
 
 if __name__ == '__main__':
     app.run(debug=True)
