@@ -53,7 +53,7 @@ def results():
     # turn ranks into a multi-line string
     pred_percent = ""
     for pair in sorted_zip:
-        pred_percent += ": ".join(pair) + '\n'
+        pred_percent += pair[0] + ': ' + str(pair[1]) + '\n'
     return render_template('results.html', pred_percent = pred_percent)
 
 if __name__ == '__main__':
