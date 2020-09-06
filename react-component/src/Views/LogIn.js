@@ -28,7 +28,7 @@ function LogIn() {
                 </Form.Group>
                 <Link>Forgot Password?</Link>
                 
-                <Button variant="primary" type="submit">
+                <Button variant="success" type="submit">
                     Login
                 </Button>
 

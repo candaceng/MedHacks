@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-  
+import './results.css';
 import React,{Component} from 'react'; 
 import { Link, Switch, Redirect, Route } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
@@ -62,9 +62,11 @@ class FileUpload extends Component {
         } else { // else display upload page
             return (
             <Container className="m-5">
-            <Button variant="primary" href="/login">Log In</Button>{' '}
-            <Button variant="primary" href="/signup">SignUp</Button>{' '}
-            <h1 style={{textAlign: "center", paddingTop: "20%"}}>AppName</h1>
+            <Button variant="success" href="/login">Log In</Button>{' '}
+            <Button variant="success" href="/signup">SignUp</Button>{' '}
+            <div className="green-box"> 
+              <h1 style={{textAlign: "center"}}>AppName</h1>
+            </div>            
             <div>
                 <input
                   id="fileItem"
@@ -72,12 +74,10 @@ class FileUpload extends Component {
                   label="Upload your skin lesion!"
                   custom
                   onChange={this.onFileChange}/>
-                  <Button onClick={this.onFileUpload}> 
+                  <Button variant="success"onClick={this.onFileUpload}> 
                   Upload! 
                 </Button> 
             </div>
-                
-            <Button variant="primary" href="/results">Results</Button>{' '}
 
             </Container>
             )

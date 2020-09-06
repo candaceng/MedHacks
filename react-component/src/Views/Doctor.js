@@ -22,7 +22,7 @@ function ContactDoctor() {
                     <Form.Control type="email" placeholder="Email Address" />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="success" type="submit">
                     Send
                 </Button>
             </Form>

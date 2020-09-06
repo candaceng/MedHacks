@@ -35,3 +35,9 @@
 .btn{
     margin-left: 10px;
 }
+
+.green-box{
+    height: 100px; 
+    /* background-color:green; */
+    margin-top: 20%
+}

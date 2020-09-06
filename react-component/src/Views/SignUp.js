@@ -37,7 +37,7 @@ function SignUp() {
                     <Form.Control type="password" placeholder="Retype Password" />
                 </Form.Group>
                 
-                <Button variant="primary" type="submit">
+                <Button variant="success" type="submit">
                     Sign Up
                 </Button>
 
