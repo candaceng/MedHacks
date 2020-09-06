@@ -14,6 +14,7 @@ from keras.models import load_model
 model = load_model('model.h5')
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = 'medhacks/img'
 categories = ['Actinic Keratoses',
              'Basal Cell Carcinoma',
              'Benign Keratosis',
@@ -33,12 +34,19 @@ def doctor():
 
 @app.route("/fileupload", methods=['GET', 'POST'])
 def fileupload():
-    if request.method == "POST":    # if upload is successful I guess?
-        if request.files:
+    if request.method == "POST":
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file:
             image = np.asarray(Image.open(request.files["image"]).stream.resize((100,75)))
             image.shape = (1,) + image.shape
             preds = model.predict(image)[0]
-            print("IMAGE RECEIVED")
+            print("DEBUG: IMAGE RECEIVED")
             print(preds)
             return redirect(url_for('results'))
     return render_template("fileupload.html")
