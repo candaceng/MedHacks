@@ -49,7 +49,7 @@ def fileupload():
             print("DEBUG: IMAGE RECEIVED")
             print(preds)
             return redirect(url_for('results'))
-    return render_template("fileupload.html")
+    return render_template("fileupload2.html")
 
 @app.route("/results", methods=['GET'])
 def results():

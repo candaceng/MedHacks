@@ -23,16 +23,13 @@
             </div>
         </div>
 
-        <form>
+        <form method="POST" action="" enctype="multipart/form-data">
           <div class="container">
             <div class="form-group">
               <label for="exampleFormControlFile1">Upload your skin lesion here:</label>
-              <input type="file" class="form-control-file" id="exampleFormControlFile1">
-
+              <input type="file" name="skin_lesion" accept="image/*" class="form-control-file" id="exampleFormControlFile1">
             </div>
-            <div class="right">
-              <button class="btn btn-success" role="button"style="margin-left:10px">Upload</button>
-            </div>
+              <input type="submit" value="Submit" class="btn btn-success" role="button" style="margin-left:10px">
           </div>
         </form>
 
