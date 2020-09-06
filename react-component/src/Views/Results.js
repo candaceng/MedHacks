@@ -26,7 +26,7 @@ function Results(props) {
             <div className= "title"> Your Results: </div>
             
 
-            <img className = "img" alt="monster" src={props.image}/>
+            <img className = "img" alt="image-upload" src={props.image}/>
             <br/>
             <Button variant="success" href='/' style={{marginLeft:'30px'}}>Take another image</Button>
             <Button variant="success" href='/doctor' style={{marginLeft:'10px'}}>Email Doctor</Button>

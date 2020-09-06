@@ -1,3 +1,61 @@
+<<<<<<< HEAD
+=======
+.header{
+    height: 50px;
+    /* background-color: #31517A; */
+    background-color:#6B927D;
+    padding: 15px; 
+    font-size: 25px; 
+    color: white; 
+    line-height: 25px;
+    margin-bottom: 40px; 
+  }
+
+.title{
+    margin: 30px; 
+    font-size: 25px;
+}
+
+.img{
+    width: 30%; 
+    height: auto;
+    margin-left: 30px; 
+    margin-bottom: 30px;
+}
+
+#app-title{
+    float:left; 
+    width:95%; 
+}
+
+
+#home-screen{
+    float:right; 
+    width:5%; 
+}
+
+.btn{
+    margin-left: 10px;
+}
+
+.green-box{
+    height: 100px; 
+    /* background-color:green; */
+    margin-top: 20%;
+    margin-bottom: 20%
+}
+
+.container{
+    text-align: center}
+   
+    
+    .inner{
+        padding: 50px,
+    /* >>>>>>> 47886385abec3b48203fc7387599af93ae2b8a9b */
+    }
+
+
+>>>>>>> a906cb937c0beddc3b4d5a975172679a5a5905dc
 .inner{
     padding: 50px,
 }
