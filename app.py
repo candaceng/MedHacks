@@ -40,7 +40,7 @@ def fileupload():
             preds = model.predict(image)[0]
             print("IMAGE RECEIVED")
             print(preds)
-            return redirect(request.url)
+            return redirect(url_for('results'))
 
 
     return render_template("fileupload.html")
