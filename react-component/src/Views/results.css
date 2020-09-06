@@ -39,5 +39,10 @@
 .green-box{
     height: 100px; 
     /* background-color:green; */
-    margin-top: 20%
+    margin-top: 20%;
+    margin-bottom: 20%
+}
+
+.container{
+    text-align: center
 }

@@ -62,8 +62,11 @@ class FileUpload extends Component {
         } else { // else display upload page
             return (
             <Container className="m-5">
-            <Button variant="success" href="/login">Log In</Button>{' '}
-            <Button variant="success" href="/signup">SignUp</Button>{' '}
+              <div className="container">
+                <Button variant="success" href="/login">Log In</Button>{' '}
+                <Button variant="success" href="/signup">SignUp</Button>{' '}
+              </div>
+            
             <div className="green-box"> 
               <h1 style={{textAlign: "center"}}>AppName</h1>
             </div>            
