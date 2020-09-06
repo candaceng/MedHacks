@@ -56,6 +56,7 @@ def results():
     zipped = zip(categories, preds)
     sorted_pred = sorted(zipped, reverse = True)
     pred_str = [(str(p[0]) + ': ' + str(p[1])) for p in sorted_pred]
+    # pred_str = ['Actinic Keratoses: 0.0', 'Basal Cell Carcinoma: 0.0', 'Benign Keratosis: 0.0', 'Dermatofibroma: 0.0', 'Melanoma: 1.0', 'Melanocytic Nevi: 0.0', 'Vascular skin lesion: 0.0']
     return render_template('results.html', pred = pred_str)
 
 if __name__ == '__main__':
