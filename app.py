@@ -14,16 +14,16 @@ from keras.models import load_model
 model = load_model('model.h5')
 
 app = Flask(__name__)
-# categories = ['Actinic Keratoses',
-#              'Basal Cell Carcinoma',
-#              'Benign Keratosis',
-#              'Dermatofibroma',
-#              'Melanoma',
-#              'Melanocytic Nevi',
-#              'Vascular skin lesion']
-# dict = {}
+categories = ['Actinic Keratoses',
+             'Basal Cell Carcinoma',
+             'Benign Keratosis',
+             'Dermatofibroma',
+             'Melanoma',
+             'Melanocytic Nevi',
+             'Vascular skin lesion']
+dict = {}
 
-pred = np.zeros(7)
+preds = np.zeros(7)
 
 @app.route("/")
 def index():
@@ -39,10 +39,7 @@ def fileupload():
         if request.files:
             image = np.asarray(Image.open(request.files["image"]).stream.resize((100,75)))
             image.shape = (1,) + image.shape
-            pred = model.predict(image)[0]
-            # match numbers to categories
-            # dictionary = dict(zip(categories, predictions))
-            # return flask.jsonify(dictionary)
+            preds = model.predict(image)[0]
 
             return redirect(request.url)
 
@@ -51,7 +48,15 @@ def fileupload():
 
 @app.route("/results", methods=['GET'])
 def results():
-    return render_template('results.html', pred = pred)
+    # match result numbers to category names
+    dict = dict(zip(categories, preds))
+    # rank results by highest probability
+    sorted_dict = sorted(dict.items(), key=lambda item: item[1], reverse = True)
+    # turn ranks into a multi-line string
+    pred_percent = ""
+    for pair in sorted_dict:
+        pred_percent += ": ".join(pair) + '\n'
+    return render_template('results.html', pred_percent = pred_percent)
 
 if __name__ == '__main__':
     app.run(debug=True)
